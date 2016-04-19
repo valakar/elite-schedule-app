@@ -21,14 +21,89 @@ angular.module('eliteApp', ['ionic'])
 
       .state('home', {
         url: '/home',
+        abstract: true,
         templateUrl: 'app/home/home.html'
+      })
+
+      .state('home.leagues', {
+        url: '/leagues',
+        views: {
+          'tab-leagues': {
+            templateUrl: 'app/home/leagues.html'
+          }
+        }
+      })
+
+      .state('home.myteams', {
+        url: '/myteams',
+        views: {
+          'tab-myteams': {
+            templateUrl: 'app/home/myteams.html'
+          }
+        }
       })
 
       .state('app', {
         url: '/app',
+        abstract: true,
         templateUrl: 'app/layout/menu-layout.html'
+      })
+
+      .state('app.teams', {
+        url: '/teams',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/teams/teams.html'
+          }
+        }
+      })
+
+      .state('app.team-detail', {
+        url: '/teams/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/teams/team-detail.html',
+            controller: 'teamDetailController'
+          }
+        }
+      })
+
+      .state('app.game', {
+        url: '/game/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/game/game.html'
+          }
+        }
+      })
+
+      .state('app.standings', {
+        url: '/standings',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/standings/standings.html'
+          }
+        }
+      })
+
+      .state('app.locations', {
+        url: '/locations',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/locations/locations.html'
+          }
+        }
+      })
+
+      .state('app.rules', {
+        url: '/rules',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/rules/rules.html'
+          }
+        }
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/app/teams');
   });
