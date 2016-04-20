@@ -3,13 +3,12 @@
 
   angular
     .module('eliteApp')
-    .controller('teamDetailController', teamDetailController);
+    .controller('TeamDetailController', TeamDetailController);
 
-  function teamDetailController($stateParams) {
+  function TeamDetailController($stateParams) {
 
     var vm = this;
 
-    console.log('test');
-    console.log('$stateParams', $stateParams);
+
   }
 })();

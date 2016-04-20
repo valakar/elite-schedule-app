@@ -16,7 +16,10 @@ angular.module('eliteApp', ['ionic'])
     });
   })
 
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom');
+
     $stateProvider
 
       .state('home', {
@@ -29,7 +32,9 @@ angular.module('eliteApp', ['ionic'])
         url: '/leagues',
         views: {
           'tab-leagues': {
-            templateUrl: 'app/home/leagues.html'
+            templateUrl: 'app/home/leagues.html',
+            controller: 'LeaguesController',
+            controllerAs: 'leaguesCtrl'
           }
         }
       })
@@ -63,7 +68,8 @@ angular.module('eliteApp', ['ionic'])
         views: {
           'menuContent': {
             templateUrl: 'app/teams/team-detail.html',
-            controller: 'teamDetailController'
+            controller: 'TeamDetailController',
+            controllerAs: 'teamDetailCtrl'
           }
         }
       })
@@ -90,7 +96,9 @@ angular.module('eliteApp', ['ionic'])
         url: '/locations',
         views: {
           'menuContent': {
-            templateUrl: 'app/locations/locations.html'
+            templateUrl: 'app/locations/locations.html',
+            controller: 'LocationsController',
+            controllerAs: 'locationsCtrl'
           }
         }
       })
