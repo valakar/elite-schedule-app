@@ -5,7 +5,7 @@
         <div class="item item-divider item-energized">{{division.divisionName}}</div>
 
         <a class="item item-icon-right"
-           ui-sref="app.teams({id: team.id})"
+           ui-sref="app.team-detail({id: team.id})"
            ng-repeat="team in division.divisionTeams">
           {{team.name}}
           <i class="icon ion-chevron-right icon-accessory"></i>
