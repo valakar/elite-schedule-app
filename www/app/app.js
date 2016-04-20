@@ -58,7 +58,9 @@ angular.module('eliteApp', ['ionic'])
         url: '/teams',
         views: {
           'menuContent': {
-            templateUrl: 'app/teams/teams.html'
+            templateUrl: 'app/teams/teams.html',
+            controller: 'TeamsController',
+            controllerAs: 'teamsCtrl'
           }
         }
       })
@@ -87,7 +89,9 @@ angular.module('eliteApp', ['ionic'])
         url: '/standings',
         views: {
           'menuContent': {
-            templateUrl: 'app/standings/standings.html'
+            templateUrl: 'app/standings/standings.html',
+            controller: 'StandingsController',
+            controllerAs: 'standingsCtrl'
           }
         }
       })
