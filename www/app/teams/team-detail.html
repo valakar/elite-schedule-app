@@ -1,5 +1,40 @@
 <ion-view title="{{teamDetailCtrl.teamName}}">
   <ion-content class="has-header">
+
+    <div class="card">
+      <div class="item item-button-right">
+        <h2>Record: {{teamDetailCtrl.teamStanding.wins}}-{{teamDetailCtrl.teamStanding.losses}}</h2>
+
+        <button class="button button-positive icon-left"
+                ng-class="{
+                  'ion-checkmark-round': teamDetailCtrl.following,
+                  'ion-plus-round button-outline': !teamDetailCtrl.following,
+                }"
+                ng-click="teamDetailCtrl.toggleFollow()">
+          {{teamDetailCtrl.following ? 'Following' : 'Not following'}}
+        </button>
+      </div>
+
+      <!--<div class="item item-checkbox">-->
+      <!--<h2>{{teamDetailCtrl.following ? 'Following' : 'Not following'}}</h2>-->
+      <!--<label class="checkbox">-->
+      <!--<input type="checkbox" ng-model="teamDetailCtrl.following">-->
+      <!--</label>-->
+      <!--</div>-->
+
+      <!--<div class="item item-toggle">-->
+      <!--<h2>{{teamDetailCtrl.following ? 'Following' : 'Not following'}}</h2>-->
+      <!--<label class="toggle toggle-energized">-->
+      <!--<input type="checkbox" ng-model="teamDetailCtrl.following">-->
+      <!--<div class="track">-->
+      <!--<div class="handle"></div>-->
+      <!--</div>-->
+      <!--</label>-->
+      <!--</div>-->
+
+
+    </div>
+
     <div class="list">
       <a class="item item-icon-right"
          ng-repeat="game in teamDetailCtrl.games"
