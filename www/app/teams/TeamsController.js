@@ -5,13 +5,11 @@
     .module('eliteApp')
     .controller('TeamsController', TeamsController);
 
-  function TeamsController(eliteApi) {
+  function TeamsController(eliteApi, leagueData) {
     var vm = this;
-
-    var data = eliteApi.getLeagueData();
-
+    
     angular.extend(vm, {
-      teams: data.teams
+      teams: leagueData.teams
     });
   }
 })();

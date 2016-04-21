@@ -5,13 +5,11 @@
     .module('eliteApp')
     .controller('StandingsController', StandingsController);
 
-  function StandingsController(eliteApi) {
+  function StandingsController(leagueData) {
     var vm = this;
 
-    var data = eliteApi.getLeagueData();
-
     angular.extend(vm, {
-      standings: data.standings
+      standings: leagueData.standings
     });
   }
 })();

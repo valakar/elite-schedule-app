@@ -34,7 +34,10 @@ angular.module('eliteApp', ['ionic'])
           'tab-leagues': {
             templateUrl: 'app/home/leagues.html',
             controller: 'LeaguesController',
-            controllerAs: 'leaguesCtrl'
+            controllerAs: 'leaguesCtrl',
+            resolve: {
+              leagues: getLeagues
+            }
           }
         }
       })
@@ -51,11 +54,17 @@ angular.module('eliteApp', ['ionic'])
       .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'app/layout/menu-layout.html'
+        templateUrl: 'app/layout/menu-layout.html',
+        resolve: {
+          leagueData: getLeagueData
+        }
       })
 
       .state('app.teams', {
         url: '/teams',
+        params: {
+          leagueId: null
+        },
         views: {
           'menuContent': {
             templateUrl: 'app/teams/teams.html',
@@ -120,4 +129,12 @@ angular.module('eliteApp', ['ionic'])
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/teams');
+
+    function getLeagues(eliteApi) {
+      return eliteApi.getLeagues();
+    }
+
+    function getLeagueData(eliteApi, $stateParams) {
+      return eliteApi.getLeagueData();
+    }
   });

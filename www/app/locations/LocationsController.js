@@ -5,13 +5,11 @@
     .module('eliteApp')
     .controller('LocationsController', LocationsController);
 
-  function LocationsController(eliteApi) {
+  function LocationsController(leagueData) {
     var vm = this;
 
-    var data = eliteApi.getLeagueData();
-
     angular.extend(vm, {
-      locations: data.locations
+      locations: leagueData.locations
     });
   }
 })();
