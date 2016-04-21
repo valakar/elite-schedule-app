@@ -5,10 +5,9 @@
     .module('eliteApp')
     .controller('TeamDetailController', TeamDetailController);
 
-  function TeamDetailController($stateParams, $ionicPopup, eliteApi) {
+  function TeamDetailController($stateParams, $ionicPopup, eliteApi, leagueData) {
 
     var vm = this;
-    var data = eliteApi.getLeagueData();
     vm.teamId = Number($stateParams.id);
 
     angular.extend(vm, {
@@ -17,7 +16,8 @@
       teamStanding: getTeamStanding(),
       toggleFollow: toggleFollow
     });
-    var team = _.chain(data.teams)
+
+    var team = _.chain(leagueData.teams)
       .map("divisionTeams")
       .flatten()
       .find({"id": vm.teamId})
@@ -26,7 +26,7 @@
     vm.teamName = team.name;
 
     function getGames() {
-      return _.chain(data.games)
+      return _.chain(leagueData.games)
         .filter(isTeamInGame)
         .map(function (item) {
           var isTeam1 = (item.team1Id === vm.teamId);
@@ -46,8 +46,9 @@
     }
 
     function getTeamStanding() {
-      return _.chain(data.standings)
-        .flatten("divisionStandings")
+      return _.chain(leagueData.standings)
+        .map("divisionStandings")
+        .flatten()
         .find({"teamId": vm.teamId})
         .value();
     }

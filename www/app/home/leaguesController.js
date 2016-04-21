@@ -5,17 +5,18 @@
     .module('eliteApp')
     .controller('LeaguesController', LeaguesController);
 
-  function LeaguesController($state, eliteApi) {
+  function LeaguesController($state, eliteApi, leagues) {
     var vm = this;
 
     angular.extend(vm, {
-      leagues: eliteApi.getLeagues(),
+      leagues: leagues,
       selectLeague: selectLeague
     });
 
-    function selectLeague() {
+    function selectLeague(id) {
       //TODO: select correct league
-      $state.go('app.teams');
+      eliteApi.setLeagueId(id);
+      $state.go('app.teams', {leagueId: id}, {reload: true});
     }
 
   }
