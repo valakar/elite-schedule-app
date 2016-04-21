@@ -80,7 +80,9 @@ angular.module('eliteApp', ['ionic'])
         url: '/game/:id',
         views: {
           'menuContent': {
-            templateUrl: 'app/game/game.html'
+            templateUrl: 'app/game/game.html',
+            controller: 'GameController',
+            controllerAs: 'gameCtrl'
           }
         }
       })
